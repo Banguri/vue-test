@@ -1,0 +1,32 @@
+/**** common ****/
+
+.el-blind {
+  overflow: hidden;
+  position: absolute;
+  top: -9999em;
+  left: -9999em;
+  display: block;
+  width: 1px;
+  height: 1px;
+  font-size: 0;
+  line-height: 0;
+  text-indent: -9999em;
+}
+.el-square {
+  border-radius: 0 !important;
+}
+.el-flex {
+  display: flex;
+}
+.el-inline-flex {
+  display: inline-flex;
+}
+.el-required {
+  color: #ff5b57;
+  font-weight: 700;
+  font-size: 14px;
+  margin: 0 0 -2px 2px;
+}
+.nowrap {
+  white-space: nowrap;
+}

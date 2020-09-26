@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "tslint-config-standard",
+    "tslint-config-prettier",
+    "tslint-eslint-rules"
+  ],
+
+  "rules": {
+    "no-constant-condition": true,
+    "prefer-const": true,
+    "max-line-length": [false, 120]
+  }
+
+
+}

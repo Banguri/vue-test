@@ -1,0 +1,128 @@
+/**** table ****/
+
+.table {
+  &.table-custom {
+    &>thead,
+    &>tbody {
+      &>tr {
+        &>th,
+        &>td {
+          padding: 9px 8px 7px;
+          text-align: center;
+          vertical-align: middle;
+          border: 1px solid #dcdfe6;
+          &.with-form,
+          &.with-btn {
+            padding: 2px 5px;
+          }
+        }
+      }
+    }
+    &>thead {
+      &>tr {
+        &>th {
+          padding: 7px 8px;
+          color: #242a30;
+          border-bottom: 1px solid #b6c2c9;
+          background: #f2f3f4;
+        }
+      }
+    }
+    [class^=with-] {
+      padding: 2px 5px;
+    }
+    img {
+      margin: 1px 0;
+    }
+    .btn {
+      margin: 1px 0;
+      margin-left: 4px;
+      border-radius: 3px !important;
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+    .btn-row-mov {
+      color: rgba(0,0,0,.5);
+      font-size: 16px !important;
+      line-height: 0 !important;
+      padding: 4px 1px 5px;
+      &.disabled,
+      &:disabled {
+        opacity: .5;
+        cursor: default;
+      }
+    }
+    .custom-control {
+      &.custom-checkbox,
+      &.custom-radio {
+        &.hide-label {
+          padding-left: 1rem;
+          margin-right: 0;
+          label,
+          .custom-control-label {
+            &:before,
+            &:after {
+              left: -1rem;
+              top: 0;
+            }
+          }
+        }
+      }
+    }
+    .btn.btn-icon.btn-xs.btn-tooltip {
+      margin-top: -1px;
+      margin-bottom: 0;
+    }
+  }
+  &.no-border-lr {
+    &>thead,
+    &>tbody {
+      &>tr {
+        &>th,
+        &>td {
+          &:first-child {
+            border-left: none;
+          }
+          &:last-child {
+            border-right: none;
+          }
+        }
+      }
+    }
+  }
+  &.no-border-row {
+    &>thead,
+    &>tbody {
+      &>tr {
+        &>th,
+        &>td {
+          border-left: none;
+          border-right: none;
+        }
+      }
+    }
+  }
+  &.text-left {
+    &>thead,
+    &>tbody {
+      &>tr {
+        &>th,
+        &>td {
+          text-align: left;
+        }
+      }
+    }
+  }
+  &.text-right {
+    &>thead,
+    &>tbody {
+      &>tr {
+        &>th,
+        &>td {
+          text-align: right;
+        }
+      }
+    }
+  }
+}

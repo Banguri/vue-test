@@ -1,0 +1,49 @@
+# dependencies
+node_modules
+
+# logs
+npm-debug.log
+
+# Nuxt build
+.nuxt
+.nuxt-dev
+.mobileNuxt
+.htmlNuxt
+.mobileHtmlNuxt
+
+# Intellij
+.idea/
+.vscode/
+
+# Nuxt generate
+./dist/
+
+# yarn
+yarn.lock
+yarn-error.log
+
+#package
+package-lock.json
+/01_DOC
+
+#editor
+.editorconfig
+
+
+#error
+yarn-error.log
+
+#store
+.DS_Store
+
+#pwa
+sw.*
+projects/
+
+#nuxt
+.nuxt/
+.nuxt-dev/
+dist/
+
+#pages
+src/pages/@auto/test

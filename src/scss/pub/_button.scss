@@ -1,0 +1,123 @@
+/**** button ****/
+
+/* mixin */
+@mixin btnCustomColor($btn-color, $btn-background-color, $btn-border-color) {
+  color: $btn-color;
+  background-color: $btn-background-color;
+  border-color: $btn-border-color;
+}
+/* variable */
+$white-bd-color: #21252950;
+$white-hover-bd-color: #21252970;
+$map-btn-color: (
+  primary: (
+    color: #fff,
+    bg-color: #348fe2,
+    bd-color: #348fe2,
+    hover-color: #fff,
+    hover-bg-color: #1c75c7,
+    hover-bd-color: #1c75c7,
+  ),
+  white: (
+    color: #212529,
+    bg-color: #fff,
+    bd-color: $white-bd-color,
+    hover-color: #212529,
+    hover-bg-color: #f2f4f5,
+    hover-bd-color: $white-hover-bd-color,
+  ),
+  green: (
+    color: #fff,
+    bg-color: #32a932,
+    bd-color: #32a932,
+    hover-color: #fff,
+    hover-bg-color: #268226,
+    hover-bd-color: #268226,
+  ),
+  gray: (
+    color: #fff,
+    bg-color: #6c757d,
+    bd-color: #6c757d,
+    hover-color: #fff,
+    hover-bg-color: #545b62,
+    hover-bd-color: #545b62,
+  ),
+  gray-custom: (
+    color: #212529,
+    bg-color: #d5dbe0,
+    bd-color: #d5dbe0,
+    hover-color: #212529,
+    hover-bg-color: #c6cfd6,
+    hover-bd-color: #c6cfd6,
+  ),
+);
+
+.btn-{
+  @each $map, $value in $map-btn-color {
+    &#{$map} {
+      @include btnCustomColor(map-get($value, color), map-get($value, bg-color), map-get($value, bd-color));
+      &:hover {
+        @include btnCustomColor(map-get($value, hover-color), map-get($value, hover-bg-color), map-get($value, hover-bd-color));
+      }
+      &.focus,
+      &:focus {
+        @include btnCustomColor(map-get($value, color), map-get($value, bg-color), map-get($value, bd-color));
+        &:hover {
+          @include btnCustomColor(map-get($value, hover-color), map-get($value, hover-bg-color), map-get($value, hover-bd-color));
+        }
+      }
+      &.disabled,
+      &:disabled {
+        @include btnCustomColor(map-get($value, color), map-get($value, bg-color), map-get($value, bd-color));
+      }
+      &:not(:disabled):not(.disabled) {
+        &.active,
+        &:active {
+          @include btnCustomColor(map-get($value, hover-color), map-get($value, hover-bg-color), map-get($value, hover-bd-color));
+        }
+      }
+    }
+  }
+}
+
+.btn-group,
+.input-group-append,
+.input-group-prepend {
+  .btn-{
+    @each $map, $value in $map-btn-color {
+      &#{$map} {
+        &+.btn-#{$map} {
+          border-left-color: map-get($value, bd-color);
+          &:hover {
+            border-left-color: map-get($value, hover-bd-color);
+          }
+          &.focus,
+          &:focus {
+            border-left-color: map-get($value, bd-color);
+            &:hover {
+              border-left-color: map-get($value, hover-bd-color);
+            }
+          }
+          &.disabled,
+          &:disabled {
+            border-left-color: map-get($value, bd-color);
+          }
+          &:not(:disabled):not(.disabled) {
+            &.active,
+            &:active {
+              border-left-color: map-get($value, hover-bd-color);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.btn {
+  box-shadow: none;
+  &.focus,
+  &:focus {
+    box-shadow: none;
+  }
+}

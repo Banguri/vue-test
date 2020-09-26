@@ -1,0 +1,2 @@
+[dxp-basecamp-dev]
+dev ansible_host=172.31.29.170 ansible_ssh_user=ec2-user ansible_ssh_private_key_file=/var/lib/jenkins/pem/ion.pem

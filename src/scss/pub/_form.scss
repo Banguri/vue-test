@@ -1,0 +1,406 @@
+/**** form ****/
+
+/* form grid */
+.form-wrap {
+  .form-group {
+    margin-bottom: 0;
+    & > [class^=col-lg-] {
+      border: solid #e4e7ea;
+      border-width: 1px 0;
+      margin-bottom: -1px;
+    }
+    .row {
+      height: 100%;
+    }
+    [class^=col-custom-] {
+      position: relative;
+      width: 100%;
+      padding: 2px 0;
+      @media (min-width: 992px) {
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+      &.col-form-label {
+        padding-top: calc(.4375rem + 1px);
+        padding-bottom: calc(.4375rem + 1px);
+        padding-left: 7px;
+        padding-right: 7px;
+        letter-spacing: -.08em;
+        word-break: keep-all;
+        @media (min-width: 992px) {
+          padding-top: 2px;
+          padding-bottom: 2px;
+        }
+      }
+    }
+    .col-custom-1 {
+      flex: 0 0 100%;
+      max-width: 100%;
+      @media (min-width: 992px) {
+        flex: 0 0 90px;
+        max-width: 90px;
+      }
+      @media (min-width: 1200px) {
+        flex: 0 0 110px;
+        max-width: 110px;
+      }
+      @media (min-width: 1660px) {
+        flex: 0 0 130px;
+        max-width: 130px;
+      }
+    }
+    .col-custom-2,
+    .col-custom-3,
+    .col-custom-5,
+    .col-custom-7,
+    .col-custom-8,
+    .col-custom-11 {
+      flex: 0 0 100%;
+      max-width: 100%;
+      @media (min-width: 992px) {
+        flex: 0 0 calc(100% - 90px);
+        max-width: calc(100% - 90px);
+      }
+      @media (min-width: 1200px) {
+        flex: 0 0 calc(100% - 110px);
+        max-width: calc(100% - 110px);
+      }
+      @media (min-width: 1660px) {
+        flex: 0 0 calc(100% - 130px);
+        max-width: calc(100% - 130px);
+      }
+    }
+  }
+}
+
+/* form element */
+.form-wrap,
+[class^=col-custom-],
+[class^=with-] {
+  .form-control {
+    margin: 1px 0;
+    border-radius: 3px !important;
+    &.form-control-sm {
+      height: 27px;
+      font-size: .6875rem;
+      padding: .3125rem;
+    }
+  }
+  textarea.form-control,
+  select.form-control[multiple] {
+    height: auto!important;
+  }
+  .btn {
+    margin: 1px 0;
+    border-radius: 3px!important;
+    & + .btn {
+      margin-left: 4px;
+    }
+  }
+  .input-group {
+    .form-control {
+      & ~ .form-control {
+        margin-left: 4px;
+      }
+    }
+    &.btn-gap {
+      & > .form-control {
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+      }
+      & > .input-group-append {
+        margin-left: 4px;
+        & > .btn {
+          border-top-left-radius: 3px;
+          border-bottom-left-radius: 3px;
+        }
+      }
+    }
+    & > .input-group-append {
+      & > .input-group-text {
+        margin: 1px 0;
+        padding: .375rem .75rem;
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+      }
+    }
+  }
+  .form-text {
+    &.text-inline {
+      display: inline-block;
+    }
+  }
+  .text-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    & > * {
+      margin-left: 4px;
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+
+  // 파일첨부
+  .b-custom-control-sm {
+    &.custom-file {
+      height: auto;
+      margin: 1px 0;
+      & > * {
+        font-size: .6875rem;
+        height: 27px;
+        margin-bottom: -1px;
+      }
+      .custom-file-input {
+        & ~ .custom-file-label[data-browse] {
+          &:after {
+            content: '파일첨부';
+            font-weight: 700;
+          }
+        }
+      }
+      .custom-file-label {
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+        &:after {
+          height: 25px;
+          border-top-right-radius: 1px;
+          border-bottom-right-radius: 1px;
+        }
+      }
+    }
+  }
+
+  // 태그추가
+  .vue-input-tag-wrapper {
+    .new-tag {
+      font-size: .6875rem;
+    }
+  }
+
+  .col-form-label {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -.06em;
+    background-color: #f2f3f4;
+    &.text-right {
+      justify-content: flex-end;
+    }
+  }
+  .form-text {
+    margin: 1px 0;
+    padding: 6px 5px 5px;
+  }
+  .form-check-inline {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+  .custom-control {
+    padding-left: 1.3125rem;
+    &.custom-control-inline {
+      display: inline-block;
+      margin-right: 10px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    .custom-control-input {
+      top: 6px;
+    }
+    .custom-control-label {
+      margin: 1px 0;
+      padding: 6px 0 5px;
+      &:before,
+      &:after {
+        top: 6px;
+        left: -1.3125rem;
+      }
+      &.in-input-group {
+        margin: 0;
+        padding: 0;
+      }
+    }
+    .control-add {
+      display: inline-flex;
+      align-items: center;
+      vertical-align: top;
+      padding-left: .3125rem;
+      padding-right: .3125rem;
+      .input-group-prepend {
+        .form-text {
+          padding-left: 0;
+        }
+      }
+      .input-group-append {
+        .form-text {
+          padding-right: 0;
+        }
+      }
+      .form-control-sm {
+        border-radius: 3px;
+      }
+    }
+    .btn.btn-icon.btn-xs.btn-tooltip {
+      margin-top: -1px;
+      margin-bottom: 0;
+    }
+  }
+  .checkbox.checkbox-css,
+  .radio.radio-css {
+    padding-top: .4185rem;
+    padding-bottom: .4185rem;
+  }
+  .checkbox.checkbox-css.checkbox-inline+.checkbox-inline,
+  .radio.radio-css.radio-inline+.radio-inline {
+    margin-left: 0;
+  }
+  .checkbox.checkbox-css.checkbox-inline,
+  .radio.radio-css.radio-inline {
+    margin-right: .75rem;
+  }
+}
+
+.form-inline {
+  & > * {
+    margin-left: 4px;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+  &.gap-10 {
+    & > * {
+      margin-left: 10px;
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+  .form-group {
+    label {
+      margin: 1px 0;
+      margin-right: 4px;
+      padding: 6px 0 5px;
+      font-weight: 700;
+    }
+    .custom-control-label {
+      font-weight: 400;
+    }
+  }
+}
+
+.custom-radio-switch {
+  overflow: hidden;
+  display: inline-flex;
+  margin: 1px 0;
+  .custom-control {
+    &.custom-control-inline {
+      margin-right: 0;
+      padding-left: 0;
+    }
+    .custom-control-input {
+      width: 43px;
+    }
+    .custom-control-label {
+      overflow: hidden;
+      width: 43px;
+      margin: 0;
+      padding: 6px 0 5px;
+      text-align: center;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: color .15s ease-in-out;
+      &:before,
+      &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 43px;
+        height: 27px;
+        border-radius: 3px;
+      }
+      &:before {
+        border: 1px solid #d5dbe0;
+        background-color: #f1f3f4;
+        z-index: 1;
+      }
+      &:after {
+        background-color: #348fe2;
+        background-image: none!important;
+        transition: left .15s ease-in-out;
+        z-index: 2;
+      }
+      span {
+        position: relative;
+        z-index: 3;
+      }
+    }
+    .custom-control-input:checked ~ .custom-control-label {
+      color: #fff;
+    }
+    &:first-child {
+      .custom-control-label,
+      .custom-control-label::before,
+      .custom-control-label::after {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      .custom-control-label {
+        &:before {
+          border-right: 0;
+        }
+        &:after {
+          left: 43px;
+        }
+      }
+      .custom-control-input:checked ~ .custom-control-label {
+        &:after {
+          left: 0;
+        }
+      }
+    }
+    &:last-child {
+      .custom-control-label,
+      .custom-control-label::before,
+      .custom-control-label::after {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+      .custom-control-label {
+        &:before {
+          border-left: 0;
+        }
+        &:after {
+          left: -43px;
+        }
+      }
+      .custom-control-input:checked ~ .custom-control-label {
+        &:after {
+          left: 0;
+        }
+      }
+    }
+  }
+}
+
+.custom-check-grid {
+  padding: 4px 0;
+  .custom-control {
+    width: 180px;
+    margin-right: 0;
+    .custom-control-input {
+      top: 4px;
+    }
+    .custom-control-label {
+      padding: 4px 0 3px;
+      &:before,
+      &:after {
+        top: 4px;
+      }
+    }
+  }
+}

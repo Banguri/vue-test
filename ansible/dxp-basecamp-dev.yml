@@ -1,0 +1,116 @@
+- hosts: dxp-basecamp-dev
+  become: yes
+  vars:
+    git_user: jenkins
+    git_password: jenkins123
+    build_path: /app/basecamp
+    pm2_process_name: jt-basecamp
+
+  tasks:
+    - name: Check Node.js installed...
+      shell: node -v
+      register: result_node_installed
+      ignore_errors: yes
+
+    - name: Download node.js rpm...
+      get_url:
+        url: https://rpm.nodesource.com/setup_13.x
+        dest: /home/ec2-user/nodesource.sh
+        owner: ec2-user
+        group: ec2-user
+        mode: 0755
+      when: result_node_installed.rc != 0
+
+    - name: Run nodesource.sh...
+      shell: /home/ec2-user/nodesource.sh
+      when: result_node_installed.rc != 0
+
+    - name: Install Node.js...
+      yum:
+        name: nodejs
+      when: result_node_installed.rc != 0
+
+    - name: Check @babel/cli installed...
+      shell: npm ls -g @babel/cli
+      register: result_babel_cli_installed
+      ignore_errors: yes
+
+    - name: Install @bable/cli...
+      shell: npm install -g @babel/cli
+      when: result_babel_cli_installed.rc != 0
+
+    - name: Check @babel/core installed...
+      command: npm ls -g @babel/core
+      register: result_babel_core_installed
+      ignore_errors: yes
+
+    - name: Install @bable/core...
+      shell: npm install -g @babel/core
+      when: result_babel_core_installed.rc != 0
+
+    - name: Check git installed...
+      command: npm ls -g git
+      register: result_git_installed
+      ignore_errors: yes
+
+    - name: Install @bable/core...
+      shell: npm install -g git
+      when: result_git_installed.rc != 0
+
+#    - name: Check pm2 installed...
+#      command: npm ls -g pm2
+#      register: result_pm2_installed
+#      ignore_errors: yes
+#
+#    - name: Install pm2...
+#      shell: npm install -g pm2
+#      when: result_pm2_installed.rc != 0
+
+    - name: Check yarn installed...
+      command: npm ls -g yarn
+      register: result_yarn_installed
+      ignore_errors: yes
+
+    - name: Install yarn...
+      shell: npm install -g yarn
+      when: result_yarn_installed.rc != 0
+
+    - name: Make sure destination frontBuilder directory exists...
+      file:
+        path: "{{build_path}}"
+        state: directory
+        owner: ec2-user
+        group: ec2-user
+        recurse: yes
+
+    - name: Git pull serviceBasecamp project...
+      git:
+        repo: "http://{{git_user}}:{{git_password}}@125.131.88.146/just10/Basecamp.git"
+        dest: "{{build_path}}"
+        force: yes
+        version: multikart-theme-base
+      become_user: ec2-user
+
+    - name: Install serviceBasecamp node modules...
+      shell: "yarn --cwd {{build_path}} install"
+      become_user: ec2-user
+
+    - name: Build project...
+      shell: "yarn --cwd {{build_path}} run build:dev"
+      become_user: ec2-user
+
+#    - name: Check PM2 process check...
+#      shell: pm2 show {{pm2_process_name}}
+#      register: result_pm2_process_check
+#      become_user: ec2-user
+#      ignore_errors: yes
+#
+#    - name: Start PM2 jt-service...
+#      shell: "pm2 start --cwd {{build_path}} {{build_path}}/ecosystem.config.js --env dev"
+#      become_user: ec2-user
+#      when: result_pm2_process_check.rc != 0
+#
+#    - name: Reload PM2 jt-service...
+#      shell: pm2 reload jt-service
+#      become_user: ec2-user
+#      when: result_pm2_process_check.rc == 0
